@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+
+        body {
+            background-color: black;
+        }
+
+        div {
+            display: block;
+        }
+
+        .js-calculation {
+            color: white;
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            margin-top: 15px;
+            margin-right: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            border: none;
+            font-size: 25px;
+        }
+
+        .signal { 
+            background-color: orange;
+            color: white;
+
+        }
+
+        .button, .signal-dot {
+            background-color: rgb(51, 51, 51);
+            color: white;   
+        }
+
+        .clear, .somewhat, .percent {
+            background-color: #A5A5A5;
+            color: black;
+        }
+
+        .clear {
+            font-size: 18px;
+        }
+
+
+    
+    </style>
+</head>
+<body>
+  
+    <div class="container-1">
+        <div class="div-line-6">
+            <p class="js-calculation"></p>
+        </div>
+        <div class="buttons-container 0">
+
+
+        </div>
+        <div class="buttons-container 1">
+            <button class="num-7 button">7</button>
+            <button class="num-8 button">8</button>
+            <button class="num-9 button">9</button>
+          
+            <button class="signal-mult signal">*</button>
+
+        </div>
+        <div class="buttons-container 2">
+            <button class="num-4 button">4</button>
+            <button class="num-5 button">5</button>
+            <button class="num-6 button">6</button>
+            <button class="signal-sub signal">-</button>
+
+
+        </div>
+        <div class="buttons-container 3">
+            <button class="num-1 button">1</button>
+            <button class="num-2 button">2</button>
+            <button class="num-3 button">3</button>
+            <button class="signal-sum signal">+</button>
+
+
+
+        </div>
+        <div class="buttons-container 4">
+            <button class="num-0 button">0</button>
+            <button class="signal-dot signal">.</button>
+            <button class="signal-equal signal">=</button>
+            <button class="signal-div signal">÷</button>
+
+        </div>
+        <div class="buttons-container 5">
+            <button class="clear button">AC</button>
+        </div>
+    
+    </div>
+   
+    <script>
+
+            const buttonConfigs = [
+                {selector:'.num-1', text: '1'},
+                {selector:'.num-2', text: '2'},
+                {selector:'.num-3', text: '3'},
+                {selector:'.signal-sum', text: '+'},
+                {selector:'.num-4', text: '4'},
+                {selector:'.num-5', text: '5'},
+                {selector:'.num-6', text: '6'},
+                {selector:'.signal-sub', text: '-'},
+                {selector:'.num-7', text: '7'},
+                {selector:'.num-8', text: '8'},
+                {selector:'.num-9', text: '9'},
+                {selector:'.signal-mult', text: '*'},
+                {selector:'.num-0', text: '0'},
+                {selector: '.signal-dot', text: '.'},
+                {selector: '.signal-equal', text: '='},
+                {selector:'.signal-div', text: '/'},
+                {selector: '.clear', text: 'AC'},
+            
+            ]
+            
+
+   
+        function addEventListeners() {
+            const calculation = document.querySelector('.js-calculation');
+            buttonConfigs.forEach(config => {
+                const button = document.querySelector(config.selector);
+                let text = config.text;
+            button.addEventListener('click', () => {
+                if (text === '=') {
+                    const result = eval(calculation.innerText);
+                    calculation.innerText = result;
+                } else if (text === 'AC') {
+                    calculation.innerHTML = '';
+                    } else {
+                        calculation.innerText += text;
+                    }
+                });
+
+        });
+    
+    }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+                addEventListeners();
+            });
+
+        
+
+    </script>
+</body>
+</html>
